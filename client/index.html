@@ -42,6 +42,12 @@
         callback();
       }
 
+
+      factory.log = function(cb){
+        console.log("Factory: ", users);
+        cb(); 
+      }
+
       return factory; 
     })
 
@@ -66,6 +72,12 @@
       $scope.createuser = function(){
         userFactory.createUser($scope.newuser, function(){
           $scope.users.push($scope.newuser);
+        })
+      }
+
+      $scope.log = function(){
+        userFactory.log(function(){
+          console.log("controller");
         })
       }
     }]);
