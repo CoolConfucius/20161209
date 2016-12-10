@@ -82,7 +82,10 @@
       }
     }]);
     myApp.controller('listController', ['$scope', 'userFactory', function ($scope, userFactory) {
-      // $scope.message = 'We are using another controller';
+      $scope.users = [];       
+      userFactory.getUsers(function(data){
+        $scope.users = data; 
+      }); 
     }]);
     </script>
   </head>
