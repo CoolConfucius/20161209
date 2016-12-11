@@ -56,14 +56,16 @@
       return factory; 
     })
 
-    //  build the controllers
-    // myApp.controller('view1Controller', function ($scope) {
-    //   $scope.sports = ['golf', 'basketball', 'hockey', 'tennis', 'football'];
-    // });
-    // myApp.controller('view2Controller', function ($scope) {
-    //   $scope.message = 'We are using another controller';
-    // });
-    myApp.controller('usersController', ['$scope', 'userFactory', function ($scope, userFactory) {
+     // build the controllers
+    myApp.controller('view1Controller', function ($scope) {
+      $scope.sports = ['golf', 'basketball', 'hockey', 'tennis', 'football'];
+    });
+    myApp.controller('view2Controller', function ($scope) {
+      $scope.message = 'We are using another controller';
+    });
+
+    myApp.controller('usersController', ['$scope', '$location', 'userFactory', function ($scope, $location, userFactory) {
+      console.log("$location: ", $location);
       $scope.users = []; 
       $scope.newuser = {
         firstname: '', 
@@ -77,6 +79,7 @@
       $scope.createuser = function(){
         userFactory.createUser($scope.newuser, function(){
           $scope.users.push($scope.newuser);
+          $location.url('/list');
         })
       }
 
