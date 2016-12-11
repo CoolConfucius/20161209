@@ -42,6 +42,11 @@
         callback();
       }
 
+      factory.deleteUser = function(index, callback){
+        users.splice(index, 1);
+        callback();
+      }
+
 
       factory.log = function(cb){
         console.log("Factory: ", users);
@@ -72,6 +77,12 @@
       $scope.createuser = function(){
         userFactory.createUser($scope.newuser, function(){
           $scope.users.push($scope.newuser);
+        })
+      }
+
+      $scope.deleteuser = function(index){
+        userFactory.deleteUser(index, function(){
+          $scope.users.splice(index, 1);
         })
       }
 
